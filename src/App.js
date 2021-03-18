@@ -12,6 +12,7 @@ import { fetchImages } from './services/pixabayApi';
 //
 import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+
 class App extends Component {
   state = {
     images: [],
@@ -56,10 +57,12 @@ class App extends Component {
           page: prevState.page + 1,
         }));
 
-        window.scrollTo({
-          top: document.documentElement.scrollHeight,
-          behavior: 'smooth',
-        });
+        if (page > 1) {
+          window.scrollTo({
+            top: document.documentElement.scrollHeight,
+            behavior: 'smooth',
+          });
+        }
       })
       .catch(error => {
         this.setState({ error });
@@ -105,7 +108,7 @@ class App extends Component {
             />
           )}
         </Container>
-        {images.length > 0 && !isLoading && (
+        {images.length >= 12 && !isLoading && (
           <Button onLoadMore={this.getImages} />
         )}
         {showModal && (

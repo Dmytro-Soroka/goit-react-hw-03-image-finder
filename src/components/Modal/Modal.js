@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import styles from './Modal.module.css';
 
-// Getting access to another div to render the Modal
+
 const modalRoot = document.querySelector('#modal-root');
 
 class Modal extends Component {
